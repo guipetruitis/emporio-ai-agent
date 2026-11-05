@@ -42,7 +42,7 @@ No cross-customer order disclosure or unrestricted SQL/tool execution was found 
 
 No real-model conversation has been run. The live mode's quality, tool-selection reliability, adversarial robustness, response latency, token cost and account/model availability remain unmeasured. A mocked provider transcript cannot establish those properties.
 
-The GitHub Actions configuration targets Linux/Windows and Python 3.11/3.14, but remote CI has not been executed. Local validation was on Windows/Python 3.14; support for other environments is an implementation target rather than an observed matrix result.
+The [GitHub Actions validation run](https://github.com/guipetruitis/emporio-ai-agent/actions/runs/41951671421) passed all four jobs for code revision `d11d005`: Linux and Windows, each with Python 3.11 and 3.14. These are offline tests, including the local SDK transport fixture, not real-model inference.
 
 The project is published at [guipetruitis/emporio-ai-agent](https://github.com/guipetruitis/emporio-ai-agent) with its development history. Public publication is separate from the offline validation above; no deployed service or submitted application is claimed. Production authentication, fresh operational data, human escalation and independent legal review are outside the prototype.
 

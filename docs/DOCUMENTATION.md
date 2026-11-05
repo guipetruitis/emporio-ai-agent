@@ -22,7 +22,7 @@ The offline demo replaces intent interpretation and prose generation with determ
 - `tests/`: offline behavioral and SDK-transport checks.
 - `examples/`: five conversations reproduced by `scripts/generate_examples.py`.
 - `scripts/export_pdf.py`: reproducible export of README, documentation, validation and examples.
-- `.github/workflows/tests.yml`: configured Linux/Windows, Python 3.11/3.14 CI matrix. Its remote execution is not claimed as completed.
+- `.github/workflows/tests.yml`: Linux/Windows, Python 3.11/3.14 CI matrix. All four jobs passed for code revision `d11d005`; see the validation record.
 
 ## 3. Data treatment and provenance
 
