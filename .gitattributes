@@ -1,0 +1,3 @@
+# Preserve byte offsets in PDFs and the original hashes of supplied CSV fixtures.
+*.pdf binary
+*.csv -text
