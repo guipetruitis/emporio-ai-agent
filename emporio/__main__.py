@@ -7,14 +7,14 @@ from pathlib import Path
 from .agent import Agent, DEFAULT_MODEL
 from .demo import DemoAgent
 from .policies import Policies
-from .store import Store
+from .store import Store, MAX_ID
 from .tools import Tools
 
 
 def positive_int(text):
     value=int(text)
-    if value<1:
-        raise argparse.ArgumentTypeError('customer ID must be positive')
+    if not 1 <= value <= MAX_ID:
+        raise argparse.ArgumentTypeError('customer ID must be a positive signed-64-bit integer')
     return value
 
 

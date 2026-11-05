@@ -51,6 +51,8 @@ class DemoAgent:
         brand=re.search(r'\b(yamaha|takamine|tagima|giannini|crafter|martin|taylor|shelby|kala|kalani|ohana|ibanez|fender|roland|casio|korg)\b',text)
         category=next((key for key in sorted(ALIASES,key=len,reverse=True)
                        if re.search(r'\b'+re.escape(key)+r'\b',text)),None)
+        if category or brand:
+            followup=False
         if followup or brand or category:
             query=self.last_product_query if followup else category
             if brand:

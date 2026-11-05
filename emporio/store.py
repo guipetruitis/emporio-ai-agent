@@ -8,6 +8,7 @@ from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 from pathlib import Path
 
 SNAPSHOT = 'Supplied CSV snapshot; not a live ERP or carrier feed.'
+MAX_ID = 2**63 - 1
 
 
 def normalize(text: str) -> str:
@@ -111,10 +112,12 @@ class Store:
                 'freshness':SNAPSHOT}
 
     def get_order(self, order_id: int, customer_id: int | None) -> dict:
-        if type(order_id) is not int or order_id < 1:
-            raise ValueError('order_id must be a positive integer.')
+        if type(order_id) is not int or not 1 <= order_id <= MAX_ID:
+            raise ValueError('order_id must be a positive signed-64-bit integer.')
         if customer_id is None:
             return {'error':'identity_required', 'message':'Use a trusted customer session; do not send personal details in chat.'}
+        if type(customer_id) is not int or not 1 <= customer_id <= MAX_ID:
+            raise ValueError('customer_id must be a positive signed-64-bit integer.')
         r = self.db.execute('SELECT * FROM orders WHERE id=? AND customer_id=?',
                             (order_id,customer_id)).fetchone()
         if r is None:

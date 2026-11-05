@@ -32,5 +32,10 @@ class CliTests(unittest.TestCase):
         self.assertEqual(result.returncode,0,result.stderr)
         self.assertIn('cleared',result.stdout)
 
+    def test_huge_customer_id_rejected(self):
+        result=self.run_cli('--mode','demo','--customer-id',str(10**30),'--message','order 1')
+        self.assertEqual(result.returncode,2)
+        self.assertNotIn('Traceback',result.stderr)
+
 
 if __name__=='__main__': unittest.main()

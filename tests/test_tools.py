@@ -100,6 +100,16 @@ class EvidenceTests(unittest.TestCase):
         result=self.tools.execute('search_products',{'query':'Yamaha','max_price_brl':'1000','available_only':True})
         self.assertEqual(result['error'],'invalid_arguments')
 
+    def test_sqlite_identifier_overflow_is_rejected(self):
+        self.assertEqual(self.tools.execute('get_order',{'order_id':10**30})['error'],'invalid_arguments')
+        with self.assertRaises(ValueError):
+            Tools(self.store,self.policies,customer_id=10**30)
+
+    def test_warranty_topic_beats_generic_delivery_time_term(self):
+        for query in ['Qual o prazo de garantia?','What is the warranty delivery period?']:
+            with self.subTest(query=query):
+                self.assertEqual(self.policies.search(query)['matches'][0]['id'],'warranty')
+
 
 if __name__ == '__main__':
     unittest.main()

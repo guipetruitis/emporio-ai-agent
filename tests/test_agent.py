@@ -143,5 +143,17 @@ class AgentTests(unittest.TestCase):
         agent.reply('How much does the Takamine GD20 cost?')
         self.assertIn('cannot be combined',agent.reply('Can I combine a promotion with PIX?').answer)
 
+    def test_new_category_overrides_old_product_in_pix_followup(self):
+        agent=DemoAgent(self.tools)
+        agent.reply('How much does the Takamine GD20 cost?')
+        result=agent.reply('Which ukulele has a PIX discount?')
+        products=result.trace[0]['result']['products']
+        self.assertTrue(products)
+        self.assertTrue(all(p['category_id']==9 for p in products))
+
+    def test_huge_order_number_returns_controlled_error(self):
+        result=DemoAgent(self.tools).reply('order '+str(10**30))
+        self.assertIn('Check',result.answer)
+
 
 if __name__=='__main__': unittest.main()

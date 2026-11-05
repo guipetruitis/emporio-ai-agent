@@ -1,4 +1,5 @@
 """Allowlisted, validated tool dispatch and strict provider schemas."""
+from .store import MAX_ID
 
 
 def schema(name, description, properties):
@@ -18,7 +19,7 @@ SCHEMAS = [
 
 class Tools:
     def __init__(self, store, policies, customer_id=None):
-        if customer_id is not None and (type(customer_id) is not int or customer_id < 1):
+        if customer_id is not None and (type(customer_id) is not int or not 1 <= customer_id <= MAX_ID):
             raise ValueError('customer_id must be a positive integer.')
         self.store, self.policies, self.customer_id = store, policies, customer_id
 

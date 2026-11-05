@@ -21,7 +21,12 @@ class Policies:
         scored = []
         for entry in self.entries:
             keys = set(normalize(' '.join(entry['keywords'])).split())
-            score = len(words & keys)
+            # Specific terms beat generic words shared by several topics (e.g. prazo).
+            # Score each token by inverse document frequency, without an embedding service.
+            score = sum(1 / sum(word in set(normalize(' '.join(other['keywords'])).split())
+                                for other in self.entries) for word in words & keys)
+            if entry['id']=='warranty' and words & {'warranty','guarantee','garantia'}:
+                score += 1
             if score:
                 hit = {k:v for k,v in entry.items() if k != 'keywords'}
                 hit['original_text'] = '\n'.join(f'Page {p}: {self.pages[p-1]}' for p in entry['pages'])
