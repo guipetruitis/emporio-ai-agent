@@ -85,8 +85,8 @@ class Architecture(Flowable):
 class Report(BaseDocTemplate):
     def __init__(self,path):
         super().__init__(str(path),pagesize=A4,leftMargin=49,rightMargin=49,
-                         topMargin=58,bottomMargin=48,title='Guilherme - AI Engineer - Project README and Documentation',
-                         author='Guilherme; implementation and documentation assisted by OpenAI Codex',
+                         topMargin=58,bottomMargin=48,title='Guilherme Petruitis Cantagesso - AI Engineer - Project README and Documentation',
+                         author='Guilherme Petruitis Cantagesso; implementation and documentation assisted by OpenAI Codex',
                          subject='Artefact technical challenge - Emporio da Musica support agent')
         self.addPageTemplates(PageTemplate(id='main',frames=Frame(49,48,A4[0]-98,A4[1]-106,id='normal',leftPadding=0,rightPadding=0,topPadding=0,bottomPadding=0),onPage=self.decorate))
         self.heading_counter=0
@@ -105,7 +105,7 @@ class Report(BaseDocTemplate):
             canvas.line(49,h-40,w-49,h-40)
         canvas.setFillColor(MUTED)
         canvas.setFont(BODY,8)
-        canvas.drawString(49,27,'Guilherme | AI Engineer | 04 November 2026')
+        canvas.drawString(49,27,'Guilherme Petruitis Cantagesso | AI Engineer | 04 November 2026')
         canvas.drawRightString(w-49,27,str(doc.page))
         canvas.restoreState()
 
@@ -189,9 +189,10 @@ def main():
         Spacer(1,20),Paragraph('Emporio da Musica',styles['h2']),
         Paragraph('A read-only agent that connects customer questions to structured operational data and source policies.',styles['body']),
         Spacer(1,26),Architecture(),Spacer(1,27),
-        Paragraph('<b>Guilherme</b><br/>AI Engineer - Full-Stack Generative AI Applications',styles['body']),
+        Paragraph('<b>Guilherme Petruitis Cantagesso</b><br/>AI Engineer - Full-Stack Generative AI Applications',styles['body']),
         Paragraph('04 November 2026',styles['small']),Spacer(1,12),
-        Paragraph('Delivery status: working local prototype. Offline behavior and SDK transport tested. Live-model validation and public GitHub publication remain pending.',styles['body']),
+        Paragraph('Delivery status: working local prototype. Offline behavior and SDK transport tested. Live-model validation remains pending.',styles['body']),
+        Paragraph('Public source: <link href="https://github.com/guipetruitis/emporio-ai-agent" color="#087e8b">github.com/guipetruitis/emporio-ai-agent</link>',styles['body']),
         Paragraph('Prepared with OpenAI Codex. The README discloses the scope of AI assistance.',styles['small']),PageBreak(),
         heading('Contents','h1')]
     toc=TableOfContents()

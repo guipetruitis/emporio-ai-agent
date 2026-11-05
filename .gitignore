@@ -1,3 +1,5 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Keep the original project protections even if a venv is created at the repo root.
 .env
 .env.*
 !.env.example
@@ -10,3 +12,12 @@ build/
 dist/
 work/
 *.sqlite*
+/pyvenv.cfg
+/[Ii]nclude/
+/[Ll]ib/
+/bin/
+/[Ss]cripts/*.exe
+/[Ss]cripts/*.dll
+/[Ss]cripts/activate*
+/[Ss]cripts/Activate*
+/[Ss]cripts/deactivate*

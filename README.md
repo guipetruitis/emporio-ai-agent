@@ -2,7 +2,11 @@
 
 A small, read-only Python agent for the Artefact AI Engineer technical challenge. It answers instrument-catalog questions, retrieves store policies, checks scoped order records and redirects requests outside the store's scope.
 
-Prepared for Guilherme. All authored documentation and example answers are in English. The original Portuguese data and policy text remain unchanged as evidence.
+Prepared for Guilherme Petruitis Cantagesso. All authored documentation and example answers are in English. The original Portuguese data and policy text remain unchanged as evidence.
+
+Public repository: [github.com/guipetruitis/emporio-ai-agent](https://github.com/guipetruitis/emporio-ai-agent).
+
+Submission document: [English README and documentation PDF](https://github.com/guipetruitis/emporio-ai-agent/blob/development/docs/submission.pdf).
 
 ## 1. What is implemented
 
@@ -151,4 +155,4 @@ python scripts/export_pdf.py --output submission.pdf
 
 The export includes this README, technical documentation, validation record and five example conversations. The original challenge PDFs are evidence files, not substituted for the project's documentation.
 
-A local Git repository with staged development commits is included. Before submitting, publish it to a public GitHub repository, add that verified URL to the submission form, and review the candidate name in the PDF filename. No public repository has been created and no application has been submitted by this project.
+The public GitHub repository preserves the staged development commits. Submit its verified URL together with the documentation PDF according to the recruiter's instructions. Live-model validation remains pending, and no application has been submitted by this project.

@@ -44,14 +44,14 @@ No real-model conversation has been run. The live mode's quality, tool-selection
 
 The GitHub Actions configuration targets Linux/Windows and Python 3.11/3.14, but remote CI has not been executed. Local validation was on Windows/Python 3.14; support for other environments is an implementation target rather than an observed matrix result.
 
-No public repository, deployed service or submitted application is part of this local validation. Production authentication, fresh operational data, human escalation and independent legal review are outside the prototype.
+The project is published at [guipetruitis/emporio-ai-agent](https://github.com/guipetruitis/emporio-ai-agent) with its development history. Public publication is separate from the offline validation above; no deployed service or submitted application is claimed. Production authentication, fresh operational data, human escalation and independent legal review are outside the prototype.
 
 ## 5. Before submission
 
 - Read the code and rationale and adapt decisions you would not defend in an interview.
 - Configure your own API key and run representative live conversations, recording failures honestly.
 - Review the supplied fictional fixtures before publishing; customer contact data has been omitted from this project.
-- Publish the repository with its existing development history and use the verified URL in the application form.
+- Use the public repository URL in the application form: https://github.com/guipetruitis/emporio-ai-agent.
 - Confirm the candidate's full name, the requested filename and the recruiter's deadline. Do not change the submitted repository after the applicable cutoff.
 
 The generated PDF includes the exact authored Markdown sources and examples, making its claims inspectable against the code and fixtures.
