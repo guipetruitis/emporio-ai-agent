@@ -28,6 +28,14 @@ class Tools:
             return {'error':'unknown_tool'}
         if not isinstance(arguments,dict) or set(arguments) != set(specs[name]['properties']):
             return {'error':'invalid_arguments'}
+        for key, spec in specs[name]['properties'].items():
+            expected=spec['type'] if isinstance(spec['type'],list) else [spec['type']]
+            value=arguments[key]
+            matches={'string':isinstance(value,str), 'number':type(value) in (int,float),
+                     'integer':type(value) is int, 'boolean':type(value) is bool,
+                     'null':value is None}
+            if not any(matches[kind] for kind in expected):
+                return {'error':'invalid_arguments'}
         try:
             if name == 'search_products':
                 return self.store.search_products(**arguments)

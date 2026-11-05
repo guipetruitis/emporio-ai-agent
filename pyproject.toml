@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "emporio-ai-agent"
+version = "0.1.0"
+description = "Read-only, evidence-grounded music-store support agent"
+requires-python = ">=3.11"
+dependencies = ["pypdf==6.10.0"]
+
+[project.optional-dependencies]
+live = ["openai==2.54.0"]
+report = ["reportlab==4.4.9"]
+
+[project.scripts]
+emporio-agent = "emporio.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["emporio*"]

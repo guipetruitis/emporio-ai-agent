@@ -84,6 +84,22 @@ class EvidenceTests(unittest.TestCase):
                 self.assertIn('error', self.tools.execute(name,args))
         self.assertNotIn('phone', json.dumps(self.tools.execute('get_order', {'order_id':1})))
 
+    def test_non_active_products_are_never_purchasable(self):
+        for query in ['Shelby SN-7C','KA-ABP-CTG','Giannini GF-3D']:
+            with self.subTest(query=query):
+                p=self.store.search_products(query,None,False)['products'][0]
+                self.assertFalse(p['available'])
+                self.assertEqual(self.store.search_products(query,None,True)['products'],[])
+
+    def test_effective_price_budget_includes_exact_boundary(self):
+        rows=self.store.search_products('Kalani KAL-700T',323.10,True)['products']
+        self.assertEqual(rows[0]['effective_price_cents'],32310)
+        self.assertEqual(self.store.search_products('Kalani KAL-700T',323.09,True)['products'],[])
+
+    def test_model_cannot_send_numeric_string_as_budget(self):
+        result=self.tools.execute('search_products',{'query':'Yamaha','max_price_brl':'1000','available_only':True})
+        self.assertEqual(result['error'],'invalid_arguments')
+
 
 if __name__ == '__main__':
     unittest.main()
